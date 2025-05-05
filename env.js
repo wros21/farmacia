@@ -1,0 +1,6 @@
+DB_NAME=pharmacy
+DB_USER=tu_usuario_mysql
+DB_PASSWORD=tu_contraseña_mysql
+DB_HOST=localhost
+SESSION_SECRET=tu_secreto_super_seguro
+PORT=3000

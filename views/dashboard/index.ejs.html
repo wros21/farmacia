@@ -1,0 +1,65 @@
+<%- include('../partials/header', { title: 'Dashboard' }) %>
+<%- include('../partials/sidebar') %>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3 mb-4">
+      <div class="card bg-success text-white">
+        <div class="card-body">
+          <h5 class="card-title">Ventas Hoy</h5>
+          <p class="card-text h4">$<%= dailyTotal.toFixed(2) %></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+      <div class="card bg-info text-white">
+        <div class="card-body">
+          <h5 class="card-title">Ventas Mes</h5>
+          <p class="card-text h4">$<%= monthlyTotal.toFixed(2) %></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-3 mb-4">
+      <div class="card bg-warning text-dark">
+        <div class="card-body">
+          <h5 class="card-title">Producto Más Vendido</h5>
+          <p class="card-text"><%= bestSellingProduct ? bestSellingProduct.name : 'N/A' %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-danger text-white">
+          Productos por Vencer
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Producto</th>
+                <th>Vence</th>
+                <th>Stock</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% expiringProducts.forEach(product => { %>
+                <tr>
+                  <td><%= product.name %></td>
+                  <td><%= product.expiration_date.toLocaleDateString() %></td>
+                  <td><%= product.stock %></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>
